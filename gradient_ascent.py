@@ -31,14 +31,14 @@ def main():
     step_sizes = [0.01, 0.02, 0.05]
     n_iter = 100
     x0 = 0
-    f_opt = func(x0)
-    x_opt = x0
     for lr in step_sizes:
         x, his_f, his_x = gradient_ascent(func, grad, 0, lr, n_iter)
         results[lr] = (x, his_f, his_x)
-        for ft, xt in zip(his_f, his_x):
-            if ft > f_opt:
-                f_opt, x_opt = ft, xt
+
+    x_opt = (np.arccos(-1/6) + np.pi * 8) / 6
+    f_opt = func(x_opt)
+    print(f'x* = {x_opt}')
+    print(f'f* = {f_opt}')
 
     fig = plt.figure()
     ax = fig.add_subplot(1, 2, 1)
